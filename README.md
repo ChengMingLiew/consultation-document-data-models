@@ -36,9 +36,8 @@ First, to support auditing, one of the few ways we can to is to introduce audit 
 These fields would be able to track which specific user performed what operation at what date and time. Hence, we have an audit log that tracks database history albeit taking up more memory. 
 
 ### Billing
+For this, we can implement a fact table for billing, `fct_billing`. This fact table serves the purpose of calculating the price breakdown, payment period, payment type and others for our own record keeping and for client-facing purposes. Some fields that would be used are:
+- `invoice_id`, `payment_status`, `payment_period`, this keeps track of which payment, the payment status and the billable period of the client.
+- `billable_amount`, `quantity`, `cost_per_unit`, `discount` this records the payment breakdown for the our and client's purposes.
 
-
-
-
-
-
+These are some fields which would allow us to keep track of invoices and it's details that are billed to our clients.
