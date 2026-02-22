@@ -6,15 +6,13 @@ DROP TABLE dim_patients;
 DROP TABLE dim_addresses;
 DROP TABLE dim_dates;
 DROP TABLE dim_practitioners;
-DROP TABLE dim_template_types;
 
 CREATE TABLE dim_addresses (
     address_key INT AUTO_INCREMENT PRIMARY KEY,
     unit VARCHAR(20),
     street_name VARCHAR(255),
-    address_line_2 VARCHAR(255),
     suburb VARCHAR(100),
-    state VARCHAR(100),
+    state VARCHAR(3),
     zip_code VARCHAR(4)
 );
 
@@ -36,11 +34,6 @@ CREATE TABLE dim_practitioners (
     UNIQUE (practitioner_id, ahpra_registration_num)
 );
 
-CREATE TABLE dim_template_types (
-    template_key INT AUTO_INCREMENT PRIMARY KEY,
-    template_type VARCHAR(100) NOT NULL UNIQUE
-);
-
 CREATE TABLE dim_patients (
     patient_key INT AUTO_INCREMENT PRIMARY KEY,
     patient_id VARCHAR(50) NOT NULL,
@@ -48,7 +41,7 @@ CREATE TABLE dim_patients (
     gender VARCHAR(20),
     birth_date DATE,
     phone_number VARCHAR(20),
-    address_key INT,
+    address_key INT NOT NULL,
     UNIQUE (patient_id),
     FOREIGN KEY (address_key) REFERENCES dim_addresses(address_key)
 );
@@ -58,7 +51,7 @@ CREATE TABLE dim_clinics (
     clinic_id VARCHAR(50) NOT NULL,
     clinic_name VARCHAR(255),
     clinic_status VARCHAR(50),
-    address_key INT,
+    address_key INT NOT NULL,
     UNIQUE (clinic_id),
     FOREIGN KEY (address_key) REFERENCES dim_addresses(address_key)
 );
