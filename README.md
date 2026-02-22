@@ -8,6 +8,8 @@
 - Dimension tables are populated with the necessary data, raw consult and document data are cleaned, parsed and ready to be inserted into the fact tables.
 - One patient and one practitioner per consult, and each consult belongs to exactly one clinic.
 - Patient, practitioner, document, consult, clinic ID are unique.
+- Documents can be generated while the consultation is ongoing.
+- All documents are generated the same day the consultation is performed.
 
 ## Denormalization
 - This model uses a star schema to organize consult and documentation data. Fact tables (`fct_documents` and `fct_consults`) store foreign keys to dimension tables, but also contain redundant attributes to support faster reporting. Attributes such as `template_type`, `event_type`, `document_status` can technically be further normalised into other dimensions, but keeping them in the fact table reduces the number of joins required, hence increasing query speed.
@@ -25,3 +27,18 @@ Considering that this data model is primarily used for reporting and analytics p
 This approach is appropriate as most queries used for reporting commonly filter the data by date. Reports based on the fiscal year, the 3rd quarter of the year, monthly reports to name a few.
 
 ## Audits and Billing
+### Audits
+First, to support auditing, one of the few ways we can to is to introduce audit logs to our database. We can implement shadow tables, where they contain the same fields as the tables they audit, plus the specific audit fields. Some of the audit fields would be:
+- `user`, records the user that made the changes.
+- `date_time_changed`, records the date and time of when the changes are made.
+- `action`, records the specific action (INSERT, DELETE, MODIFY) that is performed.
+
+These fields would be able to track which specific user performed what operation at what date and time. Hence, we have an audit log that tracks database history albeit taking up more memory. 
+
+### Billing
+
+
+
+
+
+
