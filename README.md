@@ -1,4 +1,4 @@
-# Reporting-Ready Data Models for Consulations and Documentations
+# Reporting-Ready Data Models for Consultations and Documentations
 
 ## ERD / Schema Design
 
