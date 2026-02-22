@@ -2,7 +2,7 @@
 
 ## ERD / Schema Design
 
-<img width="1325" height="748" alt="image" src="https://github.com/user-attachments/assets/010289fb-1d81-474f-805d-7cb55ed157eb" />
+<img width="833" height="737" alt="image" src="https://github.com/user-attachments/assets/6e8f9540-9875-46ff-b719-1b65f748a1e4" />
 
 ## Key Assumptions
 - Dimension tables are populated with the necessary data, raw consult and document data are cleaned, parsed and ready to be inserted into the fact tables.
