@@ -5,7 +5,7 @@
 <img width="833" height="737" alt="image" src="https://github.com/user-attachments/assets/6e8f9540-9875-46ff-b719-1b65f748a1e4" />
 
 ## Key Assumptions
-- Dimension tables are populated with the necessary data, raw consult and document data are cleaned, parsed and ready to be inserted into the fact tables.
+- Dimension tables are populated with the necessary data, raw consult and raw document data are cleansed, parsed and inserted into the fact tables.
 - One patient and one practitioner per consult, and each consult belongs to exactly one clinic.
 - Patient, practitioner, document, consult, clinic ID are unique.
 - Documents can be generated while the consultation is ongoing.
