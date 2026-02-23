@@ -22,20 +22,18 @@ CREATE TABLE fct_consults (
 CREATE TABLE fct_documents (
     document_key INT AUTO_INCREMENT PRIMARY KEY,
     document_id VARCHAR(50) NOT NULL,
-    doc_status VARCHAR(50),
+    document_status VARCHAR(50),
     signed BOOLEAN,
-    doc_time TIME,
+    document_generated_at TIME,
+    template_type VARCHAR(50),
     generated_practitioner_key INT,
-    doc_date_key INT,
+    document_date_key INT,
     consult_key INT,
-    template_key INT,
     UNIQUE (document_id),
     FOREIGN KEY (generated_practitioner_key) 
         REFERENCES dim_practitioners(practitioner_key),
-    FOREIGN KEY (doc_date_key) 
+    FOREIGN KEY (document_date_key) 
         REFERENCES dim_dates(date_key),
     FOREIGN KEY (consult_key) 
-        REFERENCES fct_consults(consult_key),
-    FOREIGN KEY (template_key) 
-        REFERENCES dim_template_types(template_key)
+        REFERENCES fct_consults(consult_key)
 );
