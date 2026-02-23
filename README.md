@@ -15,7 +15,7 @@
 - This model uses a star schema to organize consult and document data. Fact tables (`fct_documents` and `fct_consults`) store foreign keys to dimension tables, but also contain redundant attributes to support faster reporting. Attributes such as `template_type`, `event_type`, `document_status` can technically be further normalised into other dimensions, but keeping them in the fact table reduces the number of joins required, hence increasing query speed.
 - We also created derived attributes for the purpose of reporting and analysis in reporting tables (`consult_report` and `document_report`):
   - `consult_completed_at`, a timestamp when the consult was completed.
-  - `has_documents`, a boolean indicating if a document is linked with a specific consult.
+  - `has_documents`, a boolean indicating if a consult have documents linked to it or not.
   - `document_count`, the total number of documents linked to a specific consult.
   - `is_finalized`, a boolean indicating if a specific document is finalized or not.
   -  `minutes_from_consult_to_document`, the time between the consult ending and the documents linked to it being generated.
