@@ -19,6 +19,7 @@
   - `document_count`, the total number of documents linked to a specific consult.
   - `is_finalized`, a boolean indicating if a specific document is finalized or not.
   -  `minutes_from_consult_to_document`, the time between the consult ending and the documents linked to it being generated.
+
 These transformations simplify reporting queries and simplifies proccesses for upstream analysis without repeatedly performing joins and aggregations.
 
 ## Partitioning Large Tables
